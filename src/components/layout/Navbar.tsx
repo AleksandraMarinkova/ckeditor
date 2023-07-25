@@ -10,10 +10,17 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuItem from "@mui/material/MenuItem";
 import EditIcon from "@mui/icons-material/Edit";
 
-const ButtonAppBar = () => {
+const Navbar = () => {
+  const drawerWidth = 240;
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar
+        position="fixed"
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
+        }}
+      >
         <Toolbar>
           <Typography
             variant="h6"
@@ -30,7 +37,7 @@ const ButtonAppBar = () => {
             >
               English
             </Button>
-            
+
             <Button
               id="demo-customized-button"
               aria-haspopup="true"
@@ -49,4 +56,4 @@ const ButtonAppBar = () => {
   );
 };
 
-export default ButtonAppBar;
+export default Navbar;

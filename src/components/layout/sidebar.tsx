@@ -15,13 +15,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
- import logo from '../../assets/icons/logo/logo.png';
- import review from '../../assets/icons/editor/review.png'
- import libary from '../../assets/icons/editor/fi_book-open bold.png'
- import book from '../../assets/icons/editor/Frame 4.png';
- import asd from '../../assets/icons/editor/Frame 4.png';
-
-
+import SidebarItems from "../const/SidebarItems";
 
 const drawerWidth = 240;
 
@@ -37,7 +31,7 @@ interface Props {
   window?: () => Window;
 }
 
-const ResponsiveDrawer = (props: Props) => {
+const Sidebar = (props: Props) => {
   const { window } = props;
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -48,67 +42,43 @@ const ResponsiveDrawer = (props: Props) => {
 
   const drawer = (
     <div>
-       
       <Toolbar>
-          {/* <img src='../src/assets/icons/logo/Group.png' width={182} height={64} />
-          < */}
-          {/* <img src="react-text-editor/src/assets/icons/logo/Group.png"/> */}
-          {/* <img src='/Users/doxteam/Desktop/Editor/react-text-editor/src/assets/icons/logo/Group.png'  /> */}
-          {/* <img src='/Users/doxteam/Desktop/Editor/react-text-editor/src/assets/icons/logo/Group.jpg'  /> */}
-          <img src={logo} alt="My Logo" />
-          <h2>SYNERGI</h2>
-        </Toolbar>
+        {/* <img src={logo} alt="My Logo" />
+        <h2>SYNERGI</h2> */}
+        <List>
+          {SidebarItems.logoItem.map((text, index) => (
+            <ListItem key={text.id} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>{<img src={text.icon} />}</ListItemIcon>
+
+                <ListItemText primary={text.label} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Toolbar>
 
       <Divider />
       <h5>MANAGEMENT</h5>
       <List>
-        {["Review"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {SidebarItems.sideBarItemsManagement.map((text, index) => (
+          <ListItem key={text.id} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-               { <img src={review}/> }
-        
+              <ListItemIcon>{<img src={text.icon} />}</ListItemIcon>
 
-                
-               
-              </ListItemIcon>
-
-              <ListItemText primary={text} />
+              <ListItemText primary={text.label} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
-
-      {/* <Divider /> */}
-<h5>EDITOR</h5>
+      <h5>EDITOR</h5>
       <List>
-        {["Libary"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        {SidebarItems.sideBarItemsEditor.map((text, index) => (
+          <ListItem key={text.id} disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-              { <img src={libary}/> }
-              
-               
-                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              </ListItemIcon>
+              <ListItemIcon>{<img src={text.icon} />}</ListItemIcon>
 
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-
-       {["My books"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-              {/* <img src="../../"> */}
-              { <img src={book}/> }
-              <button onClick={()=>{console.log(book);
-              }}>asd</button>
-              
-              </ListItemIcon>
-
-              <ListItemText primary={text} />
+              <ListItemText primary={text.label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -123,15 +93,14 @@ const ResponsiveDrawer = (props: Props) => {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
 
-      <AppBar
+      {/* <AppBar
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
 
           ml: { sm: `${drawerWidth}px` },
         }}
-      >
-      </AppBar>
+      ></AppBar> */}
 
       <Box
         component="nav"
@@ -190,4 +159,4 @@ const ResponsiveDrawer = (props: Props) => {
   );
 };
 
-export default ResponsiveDrawer;
+export default Sidebar;

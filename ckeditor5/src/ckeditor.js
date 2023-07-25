@@ -4,12 +4,10 @@
  */
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment.js';
-import AutoLink from '@ckeditor/ckeditor5-link/src/autolink.js';
-import ImageBlock from '@ckeditor/ckeditor5-image/src/imageblock.js';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote.js';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold.js';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
-import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption.js';
+import Image from '@ckeditor/ckeditor5-image/src/image.js';
 import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert.js';
 import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload.js';
 import Indent from '@ckeditor/ckeditor5-indent/src/indent.js';
@@ -27,12 +25,10 @@ class Editor extends ClassicEditor {}
 // Plugins to include in the build.
 Editor.builtinPlugins = [
 	Alignment,
-	AutoLink,
-	ImageBlock,
 	BlockQuote,
 	Bold,
 	Essentials,
-	ImageCaption,
+	Image,
 	ImageInsert,
 	ImageUpload,
 	Indent,
@@ -56,19 +52,17 @@ Editor.defaultConfig = {
 			'strikethrough',
 			'|',
 			'alignment',
-			'undo',
-			'redo',
-			'-',
-			'bulletedList',
-			'numberedList',
 			'|',
+			'-',
+			'numberedList',
+			'outdent',
+			'indent',
+			'bulletedList',
+			'imageInsert',
 			'imageUpload',
 			'mediaEmbed',
-			'link',
-			'|',
-			'indent',
-			'outdent',
-			'blockQuote'
+			'blockQuote',
+			'link'
 		],
 		shouldNotGroupWhenFull: true
 	},
