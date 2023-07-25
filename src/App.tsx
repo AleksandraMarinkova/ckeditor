@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Editor from "ckeditor5-custom-build/build/ckeditor";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import EditorComponent from "./components/EditorComponent";
+import { Grid } from "@mui/material";
+import ButtonAppBar from "./components/layout/Navbar";
+import ResponsiveDrawer from "./components/layout/sidebar";
+// material , pozicioniranje na sredina i fixna sirina
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ButtonAppBar />
+      <ResponsiveDrawer/>
+      
+      <Grid container justifyContent="center" alignItems="center">
+        <Grid item xs={10} sm={8} md={6} lg={4}>
+          <EditorComponent />
+        </Grid>
+      </Grid>
     </div>
   );
-}
+};
 
 export default App;
