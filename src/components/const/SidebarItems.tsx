@@ -3,7 +3,6 @@ import user from "../../assets/icons/editor/user.svg";
 import review from "../../assets/icons/editor/review.svg";
 import libary from "../../assets/icons/editor/library.svg";
 import book from "../../assets/icons/editor/book.svg";
-import asd from "../../assets/icons/editor/Frame 4.png";
 
 const logoItem = [
   {
