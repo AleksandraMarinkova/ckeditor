@@ -9,21 +9,19 @@ const logoItem = [
     id: 1,
     icon: logo,
     label: "SYNERGI",
-    route: "route4",
+    route: "/",
   },
 ];
 
 const sideBarItemsManagement = [
   {
     id: 1,
-    // icon: { icon: JSX.Element, url: libraryIcon },
     icon: user,
     label: "Manage Users",
     route: "route1",
   },
   {
     id: 2,
-    // icon: { icon: JSX.Element, url: libraryIcon },
     icon: review,
     label: "Review Materials",
     route: "route1",
@@ -32,7 +30,6 @@ const sideBarItemsManagement = [
 const sideBarItemsEditor = [
   {
     id: 1,
-    // icon: { icon: JSX.Element, url: libraryIcon },
     icon: libary,
     label: "Library",
     route: "route1",

@@ -16,6 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import SidebarItems from "../const/SidebarItems";
+import { useNavigate } from "react-router";
 
 const drawerWidth = 240;
 
@@ -32,6 +33,7 @@ interface Props {
 }
 
 const Sidebar = (props: Props) => {
+  const navigate = useNavigate();
   const { window } = props;
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -47,7 +49,11 @@ const Sidebar = (props: Props) => {
         <h2>SYNERGI</h2> */}
         <List>
           {SidebarItems.logoItem.map((text, index) => (
-            <ListItem key={text.id} disablePadding>
+            <ListItem
+              key={text.id}
+              disablePadding
+              onClick={() => navigate(text.route)}
+            >
               <ListItemButton>
                 <ListItemIcon>{<img src={text.icon} />}</ListItemIcon>
 
@@ -62,7 +68,11 @@ const Sidebar = (props: Props) => {
       <h5>MANAGEMENT</h5>
       <List>
         {SidebarItems.sideBarItemsManagement.map((text, index) => (
-          <ListItem key={text.id} disablePadding>
+          <ListItem
+            key={text.id}
+            disablePadding
+            onClick={() => navigate(text.route)}
+          >
             <ListItemButton>
               <ListItemIcon>{<img src={text.icon} />}</ListItemIcon>
 
@@ -74,7 +84,11 @@ const Sidebar = (props: Props) => {
       <h5>EDITOR</h5>
       <List>
         {SidebarItems.sideBarItemsEditor.map((text, index) => (
-          <ListItem key={text.id} disablePadding>
+          <ListItem
+            key={text.id}
+            disablePadding
+            onClick={() => navigate(text.route)}
+          >
             <ListItemButton>
               <ListItemIcon>{<img src={text.icon} />}</ListItemIcon>
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Editor from "ckeditor5-custom-build/build/ckeditor";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { AccessAlarm, ThreeDRotation } from "@mui/icons-material";
@@ -33,35 +33,22 @@ const editorConfiguration = {
   shouldNotGroupWhenFull: true,
 };
 
-// Editor.defaultConfig = {
-// 	toolbar: {
-// 		items: [
-// 			'bold',
-// 			'italic',
-// 			'underline',
-// 			'strikethrough',
-// 			'|',
-// 			'alignment',
-// 			'undo',
-// 			'redo',
-// 			'-',
-// 			'bulletedList',
-// 			'numberedList',
-// 			'|',
-// 			'imageUpload',
-// 			'mediaEmbed',
-// 			'link',
-// 			'|',
-// 			'indent',
-// 			'outdent',
-// 			'blockQuote'
-// 		],
-// 		shouldNotGroupWhenFull: true
-// 	},
-// 	language: 'en'
-// };
+interface HTMLReaderProps {
+  initialHtmlContent: string;
+}
 
-const EditorComponent = () => {
+const EditorComponent: React.FC<HTMLReaderProps> = ({ initialHtmlContent }) => {
+  const [content, setContent] = useState(initialHtmlContent);
+
+  const handleEditorChange = (event: any, editor: any) => {
+    const updatedContent = editor.getData();
+    setContent(updatedContent);
+  };
+  // Save content to local storage when it changes
+  useEffect(() => {
+    localStorage.setItem("htmlContent", content);
+  }, [content]);
+
   return (
     <div className="App">
       <Grid container justifyContent="center" alignItems="center">
@@ -75,17 +62,15 @@ const EditorComponent = () => {
               // You can store the "editor" and use when it is needed.
               console.log("Editor is ready to use!", editor);
             }}
-            onChange={(event, editor: { getData: () => any }) => {
-              const data = editor.getData();
-              console.log({ event, editor, data });
+            onChange={(event: any, editor: any) => {
+              console.log("Change.", editor);
             }}
-            onBlur={(event: any, editor: any) => {
-              console.log("Blur.", editor);
-            }}
+            onBlur={handleEditorChange}
             onFocus={(event: any, editor: any) => {
               console.log("Focus.", editor);
             }}
           />
+          <div dangerouslySetInnerHTML={{ __html: content }} />
         </Grid>
       </Grid>
     </div>
