@@ -1,34 +1,20 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
-import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import SidebarItems from "../const/SidebarItems";
 import { useNavigate } from "react-router";
 
 const drawerWidth = 240;
 
 interface Props {
-  /**
-
-   * Injected by the documentation to work in an iframe.
-
-   * You won't need it on your project.
-
-   */
-
   window?: () => Window;
 }
 
@@ -45,8 +31,6 @@ const Sidebar = (props: Props) => {
   const drawer = (
     <div>
       <Toolbar>
-        {/* <img src={logo} alt="My Logo" />
-        <h2>SYNERGI</h2> */}
         <List>
           {SidebarItems.logoItem.map((text, index) => (
             <ListItem
@@ -63,7 +47,6 @@ const Sidebar = (props: Props) => {
           ))}
         </List>
       </Toolbar>
-
       <Divider />
       <h5>MANAGEMENT</h5>
       <List>
@@ -75,7 +58,6 @@ const Sidebar = (props: Props) => {
           >
             <ListItemButton>
               <ListItemIcon>{<img src={text.icon} />}</ListItemIcon>
-
               <ListItemText primary={text.label} />
             </ListItemButton>
           </ListItem>
@@ -91,7 +73,6 @@ const Sidebar = (props: Props) => {
           >
             <ListItemButton>
               <ListItemIcon>{<img src={text.icon} />}</ListItemIcon>
-
               <ListItemText primary={text.label} />
             </ListItemButton>
           </ListItem>
@@ -106,23 +87,11 @@ const Sidebar = (props: Props) => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-
-      {/* <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-
-          ml: { sm: `${drawerWidth}px` },
-        }}
-      ></AppBar> */}
-
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-
         <Drawer
           container={container}
           variant="temporary"
@@ -158,7 +127,6 @@ const Sidebar = (props: Props) => {
           {drawer}
         </Drawer>
       </Box>
-
       <Box
         component="main"
         sx={{
